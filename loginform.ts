@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
+  user={email:'',password:''};
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  
+  constructor(private fb: FormBuilder, private routerModule: RouterModule,private router:Router) {
+    
   }
 
   ngOnInit(): void {
@@ -31,6 +38,24 @@ export class AppComponent implements OnInit {
 
   login(): void {
     console.log(this.loginForm.value);
+    if(this.user.email=="ankit@gmail.com" && this.user.password=="password"){
+      this.router.navigate(['/dashboard'])
+      
+ }
+ else{
+   alert("login failed")
+
+   
+ }
+      
+    }
+
+    
+    
+    
   }
   
-}
+    
+  
+  
+  
